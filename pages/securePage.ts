@@ -9,4 +9,8 @@ export default class SecurePage {
         this.loginSuccessMessage = page.getByText('You logged into a secure area!');
         this.logoutButton = page.getByRole('button', { name: 'Logout' });
     }
+
+    async clickLogoutButton() {
+        await this.logoutButton.click();
+    }
 }
