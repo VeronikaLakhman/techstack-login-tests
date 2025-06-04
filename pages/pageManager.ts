@@ -23,5 +23,4 @@ export class PageManager {
     onSecurePage() {
         return this.securePage
     }
-
 }

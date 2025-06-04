@@ -1,8 +1,10 @@
 import { test as base, BrowserContext, Page } from '@playwright/test';
+import { PageManager } from '../pages/pageManager';
 
 type Fixtures = {
   context: BrowserContext;
   page: Page;
+  pm: PageManager;
 };
 
 export const test = base.extend<Fixtures>({
@@ -23,6 +25,11 @@ export const test = base.extend<Fixtures>({
       await page.close();
     }
   },
+
+  pm: async ({ page }, use) => {
+    const manager = new PageManager(page);
+    await use(manager);
+  }
 });
 
 export { expect } from '@playwright/test';
